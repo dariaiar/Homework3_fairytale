@@ -6,29 +6,38 @@ func main() {
 
 	getUp()
 
+	const foresterHouse int = 1
+	const forestLake int = 2
+	const enchantedTree int = 3
+	const pocketItemToBeSmall int = 1
+	const pocketItemToBeBig int = 2
+	const pocketItemToBeGreen int = 3
+	const pocketItemMatches int = 4
+
 	fmt.Printf("\n Оберіть шлях. Варіанти: 1 - будиночок лісника; 2 - озеро; 3 - зачароване дерево.\n")
-	var wheretogo int
-	fmt.Scan(&wheretogo)
+	var whereToGo int
+	fmt.Scan(&whereToGo)
 
 	var stopAsking bool
-	for stopAsking != true {
-		if wheretogo == 1 {
+	// for stopasking != true  is the same as !stopAsking
+	for !stopAsking {
+		if whereToGo == foresterHouse {
 			fmt.Println("---> Ви йдете до будиночку лісника")
 			stopAsking = true
-		} else if wheretogo == 2 {
+		} else if whereToGo == forestLake {
 			fmt.Println("---> Ви йдете до озера")
 			stopAsking = true
-		} else if wheretogo == 3 {
+		} else if whereToGo == enchantedTree {
 			fmt.Printf("---> Ви йдете до зачарованого дерева")
 			stopAsking = true
 		} else {
 			fmt.Printf("---> помилка вводу. Оберіть варіант: 1 - будиночок лісника; 2 - озеро; 3 - зачароване дерево.\n")
-			fmt.Scan(&wheretogo)
+			fmt.Scan(&whereToGo)
 			stopAsking = false
 		}
 	}
 
-	if wheretogo == 1 {
+	if whereToGo == 1 {
 		fmt.Println("\n\nАліса підійшла до будиночку. Двері масивні та старі і Алісі не вистачило сили їх відкрити. Була лише невелика щілина, через яку було видно охайну кухню з безліччу баночок з травами. Видно було, що в будинку давно ніхто не жив. Через щілину Алісі ніяк не пролізти. І тут вона відчула щось у кармані. Можливо вона знайде те, що допоможе їй зайти в будинок.")
 
 		checkPokets()
@@ -38,25 +47,25 @@ func main() {
 		fmt.Scan(&useItem)
 
 		var finish bool
-		for finish != true {
+		for !finish {
 			switch {
-			case useItem == 1:
+			case useItem == pocketItemToBeSmall:
 				fmt.Println("Ви використали печиво, яке робить вас меньшим і змогли зайти в будиночок де Аліса знайшла карту, яка допомогла їй вийти з лісу. Вітання.")
 				finish = true
-			case useItem == 2:
+			case useItem == pocketItemToBeBig:
 				fmt.Println("Ви використали печиво, яке робить вас більшим і це не допомогло зайти в будиночок. Спробуйте ще.")
 				fmt.Scan(&useItem)
-			case useItem == 3:
+			case useItem == pocketItemToBeGreen:
 				fmt.Println("Ви використали печиво, яке робить вас зеленим і це не допомогло зайти в будиночок. Спробуйте ще.")
 				fmt.Scan(&useItem)
-			case useItem == 4:
+			case useItem == pocketItemMatches:
 				fmt.Println("Ви використали сірники, це не допомогло зайти в будиночок. Спробуйте ще.")
 				fmt.Scan(&useItem)
 			}
 		}
 
 	}
-	if wheretogo == 2 {
+	if whereToGo == 2 {
 		fmt.Println("\n\nАліса підійшла до озера. Там сиділи три жаби. Вона захотіла спитати їх як вийти з лісу, але вони не розмоаляли ні з ким у лісі хто не був зеленого кольору як вони. 'Що ж робити' подумала Аліса. Аж раптом вона відчула щось у кармані. Можливо вона знайде те, що допоможе їй поговорити з жабами.")
 
 		checkPokets()
@@ -66,18 +75,18 @@ func main() {
 		fmt.Scan(&useItem)
 
 		var finish bool
-		for finish != true {
+		for !finish {
 			switch {
-			case useItem == 1:
+			case useItem == pocketItemToBeSmall:
 				fmt.Println("Ви використали печиво, яке робить вас меньшим і це не допомогло поговорити з жабами. Спробуйте ще.")
 				fmt.Scan(&useItem)
-			case useItem == 2:
+			case useItem == pocketItemToBeBig:
 				fmt.Println("Ви використали печиво, яке робить вас більшим і це не допомогло поговорити з жабами. Спробуйте ще.")
 				fmt.Scan(&useItem)
-			case useItem == 3:
+			case useItem == pocketItemToBeGreen:
 				fmt.Println("Ви використали печиво, яке робить вас зеленим і жаби згодились показати Алісі дорогу як вийти з лісу. Вітання.")
 				finish = true
-			case useItem == 4:
+			case useItem == pocketItemMatches:
 				fmt.Println("Ви використали сірники, це не допомогло поговорити з жабами. Спробуйте ще.")
 				fmt.Scan(&useItem)
 			}
@@ -85,8 +94,8 @@ func main() {
 
 	}
 
-	if wheretogo == 3 {
-		fmt.Println("\n\nАліса підійшла до зачарованого дерева та почула як хтось плаче. То була маленька фея ельф, яка розповіла, що подув сильний вітер та потушив ліхтар-свічку і тепер її сестра заблукає і не зможе повернутися додому адже орієнтується на світло від ліхтаря. І Аліса вона відчула щось у кармані. Можливо вона знайде те, що допоможе вирішити проблему феї.")
+	if whereToGo == 3 {
+		fmt.Println("\n\nАліса підійшла до зачарованого дерева та почула як хтось плаче. То була маленька фея ельф, яка розповіла, що подув сильний вітер та потушив ліхтар-свічку і тепер її сестра заблукає і не зможе повернутися додому адже орієнтується на світло від ліхтаря. І Аліса відчула щось у кармані. Можливо вона знайде те, що допоможе вирішити проблему феї.")
 
 		checkPokets()
 
@@ -95,57 +104,57 @@ func main() {
 		fmt.Scan(&useItem)
 
 		var finish bool
-		for finish != true {
+		for !finish {
 			switch {
-			case useItem == 1:
+			case useItem == pocketItemToBeSmall:
 				fmt.Println("Ви використали печиво, яке робить вас меньшим і це не допомогло запалити свічку. Спробуйте ще.")
 				finish = true
-			case useItem == 2:
+			case useItem == pocketItemToBeBig:
 				fmt.Println("Ви використали печиво, яке робить вас більшим і це не допомогло запалити свічку. Спробуйте ще.")
 				fmt.Scan(&useItem)
-			case useItem == 3:
+			case useItem == pocketItemToBeGreen:
 				fmt.Println("Ви використали печиво, яке робить вас зеленим і це не допомогло запалити свічку. Спробуйте ще.")
 				fmt.Scan(&useItem)
-			case useItem == 4:
+			case useItem == pocketItemMatches:
 				fmt.Println("Ви використали сірники, запалили свічку, а фея заспокоївшись розповіла Алісі як орієнтуючись по зіркам вийти з лісу. Вітання.")
-				fmt.Scan(&useItem)
+				finish = true
 			}
 		}
 	}
 
 }
 
-type whatisAround struct {
+type whatIsAround struct {
 	enchantedHouse string
 	path           string
 	lake           string
 	tree           string
 }
 
-func (w whatisAround) printArea() {
+func (w whatIsAround) printArea() {
 	fmt.Printf("Вона озирнулася навкруги та побачила вдалині: %s, %s, %s, %s. Куди ж піти?", w.enchantedHouse, w.path, w.lake, w.tree)
 }
 
 type coockie struct {
-	cookietobeSmall  string
-	coockietobeBig   string
-	coockietobeGreen string
+	cookieToBeSmall  string
+	coockieToBeBig   string
+	coockieToBeGreen string
 }
 
-type whatisinPocket struct {
+type whatIsInPocket struct {
 	coockie
 	matches string
 }
 
-func (b whatisinPocket) printPocket() {
-	fmt.Printf("В кармані вона знайшла:%s, %s, %s, %s.", b.cookietobeSmall, b.coockietobeBig, b.coockietobeGreen, b.matches)
+func (b whatIsInPocket) printPocket() {
+	fmt.Printf("В кармані вона знайшла:%s, %s, %s, %s.", b.cookieToBeSmall, b.coockieToBeBig, b.coockieToBeGreen, b.matches)
 }
 
 func getUp() {
 
 	fmt.Println("Аліса прокинулась у зачарованому лісі.")
 
-	isAround := whatisAround{
+	isAround := whatIsAround{
 		enchantedHouse: "будиночок лісника",
 		path:           "стежка до озера",
 		lake:           "озеро",
@@ -158,10 +167,10 @@ func getUp() {
 
 func checkPokets() {
 
-	leftPocket := whatisinPocket{
-		coockie: coockie{cookietobeSmall: "печиво, яке робить тебе меньшим", coockietobeBig: "печиво, яке робить тебе більшим", coockietobeGreen: "печиво, яке робить тебе зеленим"},
+	leftPocket := whatIsInPocket{
+		coockie: coockie{cookieToBeSmall: "печиво, яке робить тебе меньшим", coockieToBeBig: "печиво, яке робить тебе більшим", coockieToBeGreen: "печиво, яке робить тебе зеленим"},
 	}
-	rightPocket := whatisinPocket{
+	rightPocket := whatIsInPocket{
 		matches: "сірники",
 	}
 
